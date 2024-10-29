@@ -17,7 +17,7 @@ import java.util.Date;
 /**
  * @author Raysmond
  */
-@Service
+// @Service
 @JadeHelper("viewHelper")
 public class ViewHelper {
 
