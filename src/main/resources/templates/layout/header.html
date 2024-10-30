@@ -15,12 +15,12 @@
                     <a href="/" th:text="${@App.getSiteName()}"></a>
                 </h5>
                 <nav class="my-2 my-md-0 mr-md-3 topbar">
-                    <a class="p-2 " href="/">首页</a>
-                    <a class="p-2 " href="/posts/archive">归档</a>
-                    <a class="p-2 " href="/tags">标签</a>
-                    <a class="p-2 " href="/about">关于</a>
+                    <a class="p-2 " href="/">첫 페이지</a>
+                    <a class="p-2 " href="/posts/archive">보관소(아카이브)</a>
+                    <a class="p-2 " href="/tags">태그</a>
+                    <a class="p-2 " href="/about">관한 것</a>
                 </nav>
-                <a sec:authorize="isAuthenticated()" class="btn btn-outline-primary" href="/admin/posts">后台管理</a>
+                <a sec:authorize="isAuthenticated()" class="btn btn-outline-primary" href="/admin/posts">백엔드 관리</a>
             </div>
         </div>
     </div>

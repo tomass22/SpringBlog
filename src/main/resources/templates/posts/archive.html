@@ -3,18 +3,18 @@
       layout:decorator="layout/bootstrap4">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${@viewHelper.metaTitle('归档')}"></title>
+    <title th:text="${@viewHelper.metaTitle('보관소')}"></title>
 </head>
 <body>
 <div layout:fragment="content">
-    <h1 class="page-title text-center py-3">文章归档</h1>
+    <h1 class="page-title text-center py-3">기사 압축 파일</h1>
 
     <div class="post-archive">
         <div th:each="archive: ${posts}">
             <div th:text="${archive.getKey()}"></div>
             <ul>
                 <li th:each="post : ${archive.getValue()}">
-                    <a th:href="@{/posts/{id}(id=${post.getPermalink()})}" th:text="${post.title}"></a>
+                    <a th:href="@{/posts/{permalink}(permalink=${post.getPermalink()})}" th:text="${post.title}"></a>
                 </li>
             </ul>
         </div>

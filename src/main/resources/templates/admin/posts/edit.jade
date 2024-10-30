@@ -1,5 +1,5 @@
 extends ../layout/admin
-
+// 해결해야되는 부분
 block head
     script(src="/bower_components/ace-builds/src-min/ace.js")
     script(src="/bower_components/ace-builds/src-min/theme-github.js")
@@ -13,18 +13,18 @@ block content
         .item-row
             input(type="hidden", name='_csrf', value='#{_csrf.token}')
         .form-group
-            label 标题
+            label 제목
             input.form-control(type="text", name="title", value='#{postForm.getTitle()}')
 
         .form-group
-            label 正文
+            label 텍스트
             textarea.form-control#content(name="content", style="display:none;")
                 = postForm.getContent()
             div#content-editor
                 #{postForm.getContent()}
 
         .form-group
-            label 摘要
+            label 요약
             textarea.form-control#summary(name="summary", style="display:none;")
                 = postForm.getSummary()
             div#summary-editor
