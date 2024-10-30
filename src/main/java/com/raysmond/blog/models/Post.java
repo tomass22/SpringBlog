@@ -34,16 +34,16 @@ public class Post extends BaseModel {
     @Column(nullable = false)
     private String title;
 
-    @Type(type = "text")
+    @Lob
     private String content;
 
-    @Type(type = "text")
+    @Lob
     private String renderedContent;
 
-    @Type(type = "text")
+    @Lob
     private String summary;
 
-    @Type(type = "text")
+    @Lob
     private String renderedSummary;
 
     @Column(nullable = false)
@@ -58,7 +58,7 @@ public class Post extends BaseModel {
     @Enumerated(EnumType.STRING)
     private PostType postType = PostType.POST;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "posts_tags",
             joinColumns = {@JoinColumn(name = "post_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "tag_id", nullable = false, updatable = false)}
@@ -83,7 +83,11 @@ public class Post extends BaseModel {
     }
 
     public void setPermalink(String permalink) {
-        String token = permalink.toLowerCase().replace("\n", " ").replaceAll("[^a-z\\d\\s]", " ");
-        this.permalink = StringUtils.arrayToDelimitedString(StringUtils.tokenizeToStringArray(token, " "), "-");
+        if (permalink == null) {
+            this.permalink = null;
+        } else {
+            String token = permalink.toLowerCase().replace("\n", " ").replaceAll("[^a-z\\d\\s]", " ");
+            this.permalink = StringUtils.arrayToDelimitedString(StringUtils.tokenizeToStringArray(token, " "), "-");
+        }
     }
 }

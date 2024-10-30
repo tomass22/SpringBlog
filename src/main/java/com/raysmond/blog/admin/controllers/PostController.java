@@ -60,7 +60,7 @@ public class PostController {
         model.addAttribute("postForm", postForm);
         model.addAttribute("postFormats", PostFormat.values());
         model.addAttribute("postTypes", PostType.values());
-        model.addAttribute("postStatus", PostStatus.values());
+        model.addAttribute("postStatus", PostStatus.values()); // 공개 또는 비공개 게시물을 설정할 때
 
         return "admin/posts/new";
     }
