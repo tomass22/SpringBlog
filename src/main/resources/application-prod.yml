@@ -17,8 +17,8 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://127.0.0.1/spring_blog_prod?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: root
-        password:
+        username: # 데이터베이스 유저 이름
+        password: # 데이터베이스 유저 비밀번호
 
         hikari:
             data-source-properties:
@@ -30,6 +30,7 @@ spring:
     redis:
       host: redis
       port: 6379
+      password: # 도커 비밀번호
       default_expire_time: 86400
 
 logging:

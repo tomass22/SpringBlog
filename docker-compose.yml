@@ -3,9 +3,9 @@ services:
     mysql:
       image: mysql
       environment:
-        - MYSQL_USER=root
+        - MYSQL_USER= # 데이터베이스 유저 이름
         - MYSQL_DATABASE=spring_blog_prod
-        - MYSQL_ROOT_PASSWORD=123456
+        - MYSQL_ROOT_PASSWORD= # 데이터베이스 유저 비밀번호
     webapp:
       image: java:8
       depends_on:
@@ -21,3 +21,6 @@ services:
 
     redis:
       image: redis
+      environment:
+        - REDIS_PASSWORD= # 비밀번호
+      command: [ "redis-server", "--requirepass", "" ] # 빈 문자열에 비밀번호 입력
